@@ -20,5 +20,4 @@
 -*Pictures Of Dots* :
 ---------------------
 
-
-
+<img width="1366" height="768" alt="satty-20260604-183537" src="https://github.com/user-attachments/assets/e83889d8-a6e1-46e7-986e-650f065c8cad" />
