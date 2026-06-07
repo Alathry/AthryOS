@@ -21,3 +21,8 @@
 ---------------------
 
 <img width="1366" height="768" alt="satty-20260604-183537" src="https://github.com/user-attachments/assets/e83889d8-a6e1-46e7-986e-650f065c8cad" />
+
+<img width="1366" height="768" alt="satty-20260606-160651" src="https://github.com/user-attachments/assets/d15c1cfe-ba4b-4fec-ac05-80efacb75a51" />
+
+
+
