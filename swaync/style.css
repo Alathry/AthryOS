@@ -1,6 +1,4 @@
 @import "../../.cache/colors/colors.css";
-
-/* ربط ألوان Matugen بمتغيرات التصميم الخاصة بك */
 @define-color notification-bg @surface;
 @define-color text @on_surface;
 @define-color text-alt @on_surface_variant;
@@ -21,8 +19,6 @@
     font-family: "JetBrains Mono Nerd Font", sans-serif;
     font-weight: 700;
 }
-
-/* تأثيرات انتقال (Transitions) ديناميكية للعناصر التفاعلية */
 .notification-background .close-button,
 .notification-action,
 .widget-buttons-grid button,
