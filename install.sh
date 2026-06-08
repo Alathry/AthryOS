@@ -59,6 +59,7 @@ mkdir -p "$HOME/Pictures/Screenshots"
 mkdir -p "$HOME/Pictures/Wallpapers"
 
 sudo systemctl enable --now swayosd-libinput-backend.service
+ln -sf ~/.cache/colors/cava.ini ~/.config/cava/config
 
 echo ""
 echo "Made By Alathry - Vist Now !! :"
