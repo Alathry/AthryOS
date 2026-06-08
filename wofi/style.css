@@ -1,0 +1,44 @@
+@import url(".cache/colors/colors.css");
+* {
+    font-family: "Font Awesome 5 Free", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border: none;
+}
+#window {
+    background-color: transparent;
+}
+#outer-box {
+    background-color: @surface_container; 
+    border: 2px solid @primary;
+    border-radius: 0px;
+    margin: 10px;
+    padding: 15px;
+}
+#input {
+    background-color: @surface_container_high; 
+    color: @on_surface;           
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 0px;
+}
+#input:focus {
+    box-shadow: 0 0 0 2px @primary;
+}
+#scroll {
+    margin-top: 5px;
+}
+#entry {
+    padding: 8px;
+    border-radius: 0px;        
+    color: @on_surface;
+    background-color: transparent;
+}
+#entry:selected {
+    background-color: @primary_container; 
+}
+#text:selected {
+    color: @on_primary_container;            
+}
+#text {
+    padding: 0px 5px;
+}
