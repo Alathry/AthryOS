@@ -88,7 +88,6 @@ window#waybar.empty #mpris {
   color: @bg;
 }
 
-/* إعدادات زر قائمة ابدأ الجديد الخاص بك */
 #custom-start {  
   background-image: url("/home/alathry/.config/waybar/themes/Alathry/alathry.svg");
   background-position: center;
