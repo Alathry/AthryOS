@@ -17,13 +17,13 @@ window#waybar {
 
 #workspaces {
     background-color: @surface_container;
-    margin: 4px 6px; /* زيادة الهامش العلوي والسفلي ليتنفس الشريط */
-    padding: 2px 4px; /* زيادة المساحة الداخلية */
+    margin: 4px 6px; 
+    padding: 2px 4px; 
     border-radius: 6px;
 }
 
 #workspaces button {
-    padding: 0px 8px; /* تباعد مريح بين الأرقام */
+    padding: 0px 8px; 
     color: @on_surface_variant;
     background-color: transparent;
 }
@@ -40,16 +40,14 @@ window#waybar {
     border-radius: 4px;
 }
 
-/* مشغل الموسيقى في المنتصف */
+
 #custom-playerctl {
     color: @secondary;
     padding: 2px 14px;
-    background-color: @surface_container; /* وضع خلفية خفيفة للمشغل لتبدو كـ كبسولة مستقلة أنيقة */
+    background-color: @surface_container; 
     margin: 4px 0px;
     border-radius: 6px;
 }
-
-/* الكبسولات الجانبية على اليمين - تم زيادة أبعادها لتفادي الانضغاط */
 #clock,
 #pulseaudio,
 #backlight,
@@ -59,8 +57,8 @@ window#waybar {
  {
     background-color: @surface_container;
     color: @on_surface;
-    padding: 2px 10px; /* توسيع أفقياً وعمودياً */
-    margin: 4px 3px;   /* توزيع متناسق مع مساحات العمل */
+    padding: 2px 10px; 
+    margin: 4px 3px; 
     border-radius: 6px;
 }
 
