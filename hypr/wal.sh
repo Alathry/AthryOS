@@ -30,7 +30,6 @@ extract_colors() {
 generate_colors_from_matugen() {
     local wallpaper="$1"
 
-    # Get matugen JSON output
     local json_output
     json_output=$(matugen image "$wallpaper" --json hex 2>/dev/null) || {
         echo "  ERROR: matugen failed to process image"
@@ -220,10 +219,6 @@ inactive_tab_foreground ${on_surface_variant}
 inactive_tab_background ${surface_container}
 KITTY
 
-    # ─────────────────────────────────────────
-    # Generate: colors2.conf (Hyprland - Material You)
-    # ─────────────────────────────────────────
-    # Strip '#' for Hyprland rgb() format
     local h_bg="${background//#/}"
     local h_surface="${surface//#/}"
     local h_surface_container="${surface_container//#/}"
@@ -406,9 +401,8 @@ reload_services() {
 set_wallpaper() {
     local wp="$1"
     if command -v swww &>/dev/null; then
-        # Ensure swww daemon is running
-        swww query &>/dev/null 2>&1 || {
-            swww-daemon &>/dev/null &
+        awww query &>/dev/null 2>&1 || {
+            awww-daemon &>/dev/null &
             disown
             sleep 0.3
         }
@@ -775,7 +769,6 @@ main() {
 
     extract_colors "$wallpaper"
 
-    # Wait for cache to finish
     wait "$pid_cache" 2>/dev/null
 
     reload_services
