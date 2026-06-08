@@ -20,11 +20,9 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 end)
 
-hl.env("LIBVA_DRIVER_NAME", "i915")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_SCALING_FACTOR","1")
 hl.env("XDG_SESSION_TYPE", "wayland")
-hl.env("GBM_BACKEND", "intel-drm")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.config({
     general = {
