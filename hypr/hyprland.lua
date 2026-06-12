@@ -1,7 +1,7 @@
 hl.monitor({
     output   = "eDP-1",
-    mode     = "1366x768@60",
-    position = "0x0",
+    mode     = "preferd",
+    position = "1x1",
     scale    = "1",
 })
 
@@ -19,7 +19,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("swayosd-server")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 end)
-
+hl.env("GDK_SCALE", "1")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_SCALING_FACTOR","1")
 hl.env("XDG_SESSION_TYPE", "wayland")
@@ -184,9 +184,13 @@ hl.layer_rule({
     animation = "slide bottom",
     dim_around = true
 })
-
 hl.layer_rule({
     name = "notification-animations",
     match = { namespace = "swaync-control-center" },
     animation = "slide top"
+})
+hl.config({
+    xwayland = {
+        force_zero_scaling = true
+    }
 })
