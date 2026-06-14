@@ -5,7 +5,7 @@ touch Install.log
 echo "Are you using NetworkManager or IWD? (Type NM or IWD):"
 read -r NET_CHOICE
 
-PACKAGES="bluetuith matugen cava waybar hypridle hyprland xorg-xwayland swaync swayosd nodejs wget pyright gopls curl gnome-polkit rofi wofi cmatrix gtk3 gtk4 nano fonts-jetbrains-mono ttf-jetbrains-mono fonts-noto-color-emoji ttf-nerd-fonts-symbols neovim nvim lua go rust git wiremix awww uwsm fish kitty"
+PACKAGES="bluetuith matugen cava waybar hypridle hyprland xorg-xwayland swaync swayosd nodejs wget pyright gopls curl gnome-polkit rofi wofi cmatrix gtk3 gtk4 nano fonts-jetbrains-mono ttf-jetbrains-mono fonts-noto-color-emoji ttf-nerd-fonts-symbols neovim nvim lua go rust git wiremix awww uwsm fish kitty polkit-gnome brightnessctl"
 
 if [ "$NET_CHOICE" = "IWD" ] || [ "$NET_CHOICE" = "iwd" ]; then
     PACKAGES="$PACKAGES impala"
