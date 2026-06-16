@@ -34,7 +34,7 @@ hl.config({
             inactive_border = "rgba(12121212)",
         },
         resize_on_border = true,
-        allow_tearing = false,
+        allow_tearing = ture,
         layout = "dwindle",
     },
     decoration = {
