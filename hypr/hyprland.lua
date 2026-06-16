@@ -40,8 +40,8 @@ hl.config({
     decoration = {
         rounding       = 0,
         rounding_power = 0,
-        active_opacity   = 0.95,
-        inactive_opacity = 0.95,
+        active_opacity   = 1.00,
+        inactive_opacity = 1.00,
         shadow = {
             enabled      = false,
             range        = 1,
@@ -51,9 +51,9 @@ hl.config({
         },
 
         blur = {
-        enabled = true,
+        enabled = false,
         size = 4,
-        passes = 4,
+        passes = 2,
         vibrancy = 0.95,       
         brightness = 1.4,        
         contrast = 1.3,        
@@ -88,7 +88,7 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = 0,
+    force_default_wallpaper = 0,
 	vrr = 1,
 	disable_hyprland_logo   = true,
     },
@@ -115,6 +115,7 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exit())
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.exec_cmd("killall waybar swaync; waybar & swaync"))
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("sh .config/rofi/type-2/poweroff.sh"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshot))
 hl.bind(mainMod .. " + O", hl.dsp.window.float())
@@ -142,6 +143,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("swayosd-client --brightness -5
 hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("swayosd-client --brightness +5"), "Brightness up (XF86)")
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
 for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i }))
