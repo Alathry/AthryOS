@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # ╔══════════════════════════════════════════════════════════╗
 # ║           WAL.SH — Material You Wallpaper Engine         ║
-# ║           Ultra-fast · Zero-hang · Legendary             ║
+# ║           Alathry Workstation -- By Alathry              ║
 # ╚══════════════════════════════════════════════════════════╝
 
 set -euo pipefail
-
-# ── Paths ────────────────────────────────────────────────────
 WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 CACHE_DIR="$HOME/.cache"
 COLOR_DIR="$CACHE_DIR/colors"
@@ -16,17 +14,12 @@ ROFI_THEME="${ROFI_THEME:-$HOME/.config/rofi/type-2/style-15.rasi}"
 
 mkdir -p "$COLOR_DIR"
 
-# ── Guards ───────────────────────────────────────────────────
 [[ -d "$WALLPAPER_DIR" ]] || {
     notify-send -u critical "wal.sh" "Wallpaper dir not found: $WALLPAPER_DIR"; exit 1
 }
 command -v matugen &>/dev/null || {
     notify-send -u critical "wal.sh" "matugen not found — cargo install matugen"; exit 1
 }
-
-# ════════════════════════════════════════════════════════════
-# 1. WALLPAPER PICKER  (external rofi theme)
-# ════════════════════════════════════════════════════════════
 pick_wallpaper() {
     shopt -s nullglob nocaseglob
     local files=("$WALLPAPER_DIR"/*.{png,jpg,jpeg,webp})
@@ -51,15 +44,10 @@ pick_wallpaper() {
         -theme "$ROFI_THEME" \
         2>/dev/null
 }
-
-# ════════════════════════════════════════════════════════════
-# 2. SET WALLPAPER  (awww first, then fallbacks)
-# ════════════════════════════════════════════════════════════
 set_wallpaper() {
     local wp="$1"
 
     if command -v awww &>/dev/null; then
-        # Ensure daemon is running
         if ! awww query &>/dev/null 2>&1; then
             awww-daemon &>/dev/null & disown
             sleep 0.5
@@ -69,10 +57,6 @@ set_wallpaper() {
             --transition-pos center \
             --transition-duration 1 \
             --transition-fps 60
-
-    elif command -v swaybg &>/dev/null; then
-        pkill swaybg 2>/dev/null || true
-        swaybg -i "$wp" -m fill &>/dev/null & disown
 
     elif pgrep -x hyprpaper &>/dev/null && command -v hyprctl &>/dev/null; then
         hyprctl hyprpaper unload all &>/dev/null
@@ -89,28 +73,16 @@ set_wallpaper() {
         notify-send -u critical "wal.sh" "No wallpaper setter found"; return 1
     fi
 }
-
-# ════════════════════════════════════════════════════════════
-# 3. EXTRACT COLORS  (atomic write — no partial/double runs)
-# ════════════════════════════════════════════════════════════
 extract_colors() {
     local wp="$1"
-
-    # Lock file — prevent double execution
     local lockfile="/tmp/wal-colors.lock"
     exec 9>"$lockfile"
     flock -n 9 || { echo "Already running, skipping color extraction"; return 0; }
-
-    # Remove old colors so we never serve stale data
     rm -f "${COLOR_DIR}/colors.css" \
           "${COLOR_DIR}/colors.conf" \
           "${COLOR_DIR}/colors2.conf" \
           "${COLOR_DIR}/colors.rasi"
-
-    # matugen native run (writes colors.css to its own output dir)
     matugen image "$wp" -t scheme-expressive --source-color-index 0 2>/dev/null || true
-
-    # If native run didn't produce colors.css → JSON fallback
     if [[ ! -f "${COLOR_DIR}/colors.css" ]]; then
         generate_from_json "$wp" || {
             notify-send -u critical "wal.sh" "Color extraction failed"
@@ -124,11 +96,8 @@ extract_colors() {
 generate_from_json() {
     local wp="$1"
     command -v jq &>/dev/null || { echo "ERROR: jq required"; return 1; }
-
     local json
     json=$(matugen image "$wp" --json hex 2>/dev/null) || return 1
-
-    # ── Parse all colors in one jq call (fast) ───────────────
     local s="dark"
     local -A C
     while IFS='=' read -r key val; do
@@ -138,8 +107,6 @@ generate_from_json() {
         to_entries[] |
         \"\(.key)=\(.value)\"
     " 2>/dev/null)
-
-    # Helper with fallback
     _v() { echo "${C[$1]:-$2}"; }
 
     local background;             background=$(_v background             "#0e1513")
@@ -194,10 +161,6 @@ generate_from_json() {
     local source_color;           source_color=$(_v source_color         "#08110f")
 
     local ts; ts=$(date '+%Y-%m-%d %H:%M:%S')
-
-    # ── Write all files atomically (tmp → mv) ─────────────────
-
-    # colors.css — Waybar / GTK
     local f="${COLOR_DIR}/colors.css"
     cat > "${f}.tmp" << EOF
 /* Material You — Generated ${ts} */
@@ -253,8 +216,6 @@ generate_from_json() {
 @define-color tertiary_fixed_dim ${tertiary_fixed_dim};
 EOF
     mv "${f}.tmp" "$f"
-
-    # colors.conf — Kitty
     f="${COLOR_DIR}/colors.conf"
     cat > "${f}.tmp" << EOF
 # Kitty — Material You — ${ts}
@@ -288,8 +249,6 @@ inactive_tab_foreground ${on_surface_variant}
 inactive_tab_background ${surface_container}
 EOF
     mv "${f}.tmp" "$f"
-
-    # colors2.conf — Hyprland (rgb format)
     f="${COLOR_DIR}/colors2.conf"
     cat > "${f}.tmp" << EOF
 # Hyprland — Material You — ${ts}
@@ -332,8 +291,6 @@ EOF
 \$groupInactiveBorder     = rgb(${surface_variant//#/})
 EOF
     mv "${f}.tmp" "$f"
-
-    # colors.rasi — Rofi
     f="${COLOR_DIR}/colors.rasi"
     cat > "${f}.tmp" << EOF
 /* Rofi — Material You — ${ts} */
@@ -385,59 +342,32 @@ EOF
 
     echo "  Colors written: css / conf / hypr / rasi"
 }
-
-# ════════════════════════════════════════════════════════════
-# 4. RELOAD SERVICES  (ordered, real, no zombies)
-# ════════════════════════════════════════════════════════════
 reload_services() {
-    # ── Kitty: hot-reload without killing terminal ────────────
     if pgrep -x kitty &>/dev/null; then
         kill -USR1 "$(pgrep -x kitty | tr '\n' ' ')" 2>/dev/null || true
     fi
-
-    # ── Hyprland: reload config (picks up colors2.conf) ───────
     if command -v hyprctl &>/dev/null; then
         hyprctl reload &>/dev/null || true
     fi
 
-    # ── Waybar: kill → wait → restart ─────────────────────────
     if command -v waybar &>/dev/null; then
         pkill -x waybar 2>/dev/null || true
-        # Wait until it's fully dead (max 1s)
         local i=0
         while pgrep -x waybar &>/dev/null && (( i++ < 10 )); do sleep 0.1; done
         waybar &>/dev/null & disown
     fi
-
-    # ── SwayNC: reload notification daemon ────────────────────
     if command -v swaync-client &>/dev/null; then
         swaync-client -rs &>/dev/null || true
     fi
-
-    # ── Rofi: stateless — reads colors.rasi fresh each launch ─
-    # (no reload needed — next rofi invocation picks up new colors)
-
-
-    # ── pywalfox ──────────────────────────────────────────────
     command -v pywalfox &>/dev/null && pywalfox update &>/dev/null & disown 2>/dev/null || true
-
-    # ── extra hook ────────────────────────────────────────────
     local hook="$HOME/.config/hypr/scripts/reload-waybar.sh"
     [[ -x "$hook" ]] && bash "$hook" & disown 2>/dev/null || true
 }
-
-# ════════════════════════════════════════════════════════════
-# MAIN
-# ════════════════════════════════════════════════════════════
 main() {
     local t0; t0=$(date +%s%N)
-
-    # 1. Pick wallpaper via rofi
     local selected
     selected=$(pick_wallpaper) || exit 0
     [[ -z "$selected" ]] && exit 0
-
-    # 2. Resolve full path
     local wallpaper=""
     shopt -s nocaseglob
     for ext in png jpg jpeg webp; do
@@ -445,14 +375,10 @@ main() {
         [[ -f "$c" ]] && { wallpaper="$c"; break; }
     done
     shopt -u nocaseglob
-
     [[ -z "$wallpaper" ]] && {
         notify-send -u critical "wal.sh" "File not found: $selected"; exit 1
     }
-
     echo "▶ Wallpaper: $wallpaper"
-
-    # 3. Cache thumbnail (non-blocking)
     {
         echo "$wallpaper" > "$CACHE_FILE"
         if command -v magick &>/dev/null; then
@@ -463,21 +389,11 @@ main() {
         fi
     } &
     local pid_cache=$!
-
-    # 4. Set wallpaper (non-blocking)
     set_wallpaper "$wallpaper" &
     local pid_wall=$!
-
-    # 5. Extract colors — BLOCKING (reload depends on this being done)
     extract_colors "$wallpaper"
-
-    # 6. Reload all services now that colors are guaranteed written
     reload_services
-
-    # 7. Wait on background jobs
     wait "$pid_cache" "$pid_wall" 2>/dev/null || true
-
-    # 8. Notify
     local elapsed=$(( ( $(date +%s%N) - t0 ) / 1000000 ))
     notify-send \
         -i "$CACHE_IMAGE" \
