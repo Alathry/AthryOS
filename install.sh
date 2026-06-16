@@ -178,3 +178,6 @@ chmod +x ~/.config/waybar/themes/Alathry/cava.sh
 chmod +x ~/.config/hypr/scripts/wal.sh
 chmod +x ~/.config/gtk-4.0/
 chmod +x ~/.config/script/*.sh
+
+cd /usr/share/applications
+sudo rm -rf rofi.desktop xgps.desktop xgpsspeed.desktop lstopo.desktop 
