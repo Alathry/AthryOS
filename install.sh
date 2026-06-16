@@ -173,3 +173,8 @@ echo "  GitHub  : https://github.com/Alathry"
 echo "  Reddit  : https://www.reddit.com/user/Ala7thry/"
 echo "======================================================="
 ln -sf ~/.cache/colors/cava.ini ~/.config/cava/config
+chmod +x ~/.config/waybar/scripts/*.sh
+chmod +x ~/.config/waybar/themes/Alathry/cava.sh
+chmod +x ~/.config/hypr/scripts/wal.sh
+chmod +x ~/.config/gtk-4.0/
+chmod +x ~/.config/script/*.sh
