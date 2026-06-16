@@ -181,3 +181,8 @@ chmod +x ~/.config/script/*.sh
 
 cd /usr/share/applications
 sudo rm -rf rofi.desktop xgps.desktop xgpsspeed.desktop lstopo.desktop 
+sudo mkdir -p ~/Pictures/Wallpapers/
+sudo mkdir -p ~/Pictures/Screenshots/
+sudo cp -r pixel-prairie.png ~/Pictures/Wallpapers/
+awww-daemon
+matugen image ~/Pictures/Wallpapers/pixel-prairie.png
