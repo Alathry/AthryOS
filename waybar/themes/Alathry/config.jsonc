@@ -1,0 +1,173 @@
+{
+  "exclusive": true,
+  "reload_style_on_change": true,
+  "position": "top",
+  "mod": "dock",
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "margin-top": 2,
+  "margin-left": 80,
+  "margin-bottom": 0,
+  "margin-right": 80,
+
+  "modules-left": [
+    "custom/start",
+    "custom/separator",
+    "custom/cava",
+    "custom/separator",
+    "bluetooth",
+    "power-profiles-daemon",
+    "network"  
+  ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": [
+    "battery",
+    "custom/separator6",
+    "pulseaudio",
+    "custom/separator2",
+    "custom/separator5",
+    "custom/clock",
+    "custom/separator4",
+    "tray"
+  ],
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "cursor": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "9+"
+    },
+    "persistent-workspaces": {
+      "*": 10
+    }
+  },
+
+  "custom/start": {
+    "format": "            ",
+    "on-click": "wofi --show drun",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip-format": "Alathry Start Menu"
+  },
+
+  "custom/separator": { "format": "", "tooltip": false },
+  "custom/separator2": { "format": "", "tooltip": false },
+  "custom/separator3": {
+    "exec": "sh -c 'if pgrep -x cliamp >/dev/null || playerctl status 2>/dev/null | grep -qE \"Playing|Paused\"; then echo \"{\\\"text\\\":\\\"\\\",\\\"class\\\":\\\"show\\\"}\"; else echo \"{\\\"text\\\":\\\"\\\",\\\"class\\\":\\\"hide\\\"}\"; fi'",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}"
+  },
+  "custom/separator4": {
+    "exec": "sh -c 'count=$(busctl --user get-property org.kde.StatusNotifierWatcher /StatusNotifierWatcher org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems | sed -n \"s/^as \\([0-9]\\+\\).*/\\1/p\"); if [ \"${count:-0}\" -gt 0 ]; then echo \"{\\\"text\\\":\\\"|\\\",\\\"class\\\":\\\"show\\\"}\"; else echo \" {\\\"text\\\":\\\"\\\",\\\"class\\\":\\\"hide\\\"}\"; fi'",
+    "return-type": "json",
+    "interval": 2
+  },
+  "custom/separator5": { "format": "|", "tooltip": false },
+  "custom/separator6": {
+    "exec": "sh -c '[ -d /sys/class/backlight ] && [ \"$(ls -A /sys/class/backlight 2>/dev/null)\" ] && ls /sys/class/power_supply 2>/dev/null | grep -q \"^BAT\" && echo \"\"'",
+    "tooltip": false,
+    "interval": "once"
+  },
+
+  "custom/cava": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/cava.sh",
+    "restart-interval": 1,
+    "hide-on-empty": false
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  "custom/clock": {
+    "exec": "date +'%I:%M %p' | tr '[:upper:]' '[:lower:]'",
+    "interval": 60,
+    "tooltip": false
+  },
+
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "kitty --class impala -e impala"
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-charging": " {capacity}% {icon}",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "format-full": "󱊦 {capacity}%",
+    "tooltip-format-discharging": "{timeTo}",
+    "tooltip-format-charging": "{timeTo}",
+    "interval": 5,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+
+  "bluetooth": {
+    "format": " {num_connections}",
+    "format-disabled": "󰂲 {status}",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "kitty --class bluetuith -e bluetuith"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "default": [" ", " ", " "]
+    },
+    "on-click": "kitty --class wiremix -e wiremix",
+    "on-click-right": "kitty --class wiremix -e wiremix"
+  },
+
+  "mpris": {
+    "format": " {dynamic}",
+    "format-paused": "<span color='#1b1b1b'>{status_icon} {dynamic}</span>",
+    "title-len": 20,
+    "interval": 1, 
+    "dynamic-order": ["artist", "position", "length"], 
+    "dynamic-importance-order": ["position", "length", "artist"],
+    "tooltip-format": "{player} ({status}):\n{artist} - {title}",  
+    "status-icons": {
+      "paused": "󰝛"
+    },
+  },
+
+  "tray": {
+    "icon-size": 13,
+    "spacing": 2
+  }
+}

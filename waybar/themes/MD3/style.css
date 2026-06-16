@@ -1,0 +1,222 @@
+@import url("../../.cache/colors/colors.css");
+
+* {
+    font-family: "Inter Display", "JetBrainsMono Nerd Font", "Roboto", "Noto Sans Arabic", sans-serif;
+    font-size: 13.5px;
+    font-weight: 800;
+    border: 0px;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    text-shadow: none;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+*:focus,
+*:active,
+button:focus,
+button:active {
+    outline: none;
+    border: 0px;
+    box-shadow: none;
+    background-image: none;
+}
+
+window#waybar {
+    background-color: transparent;
+    animation-name: slideInBar;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+tooltip {
+    background-color: @surface_container_highest;
+    border-radius: 14px;
+    border: 1px solid @outline_variant;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.4);
+    animation-name: fadeInTooltip;
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+tooltip label {
+    color: @on_surface;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+#custom-launcher,
+#mpris,
+#workspaces,
+#clock,
+#tray,
+#network,
+#pulseaudio,
+#custom-notification,
+#power-profiles-daemon,
+#custom-power {
+    background-color: @surface_container;
+    color: @on_surface;
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin: 0 3px;
+    transition-property: background-color, color, box-shadow, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+#mpris:hover, #clock:hover, #tray:hover, #network:hover, #pulseaudio:hover, #custom-notification:hover, #power-profiles-daemon:hover {
+    background-color: @surface_container_highest;
+    color: @primary_fixed;
+ }   
+#workspaces {
+    padding: 3px 6px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: @on_surface_variant;
+    border-radius: 999px;
+    min-width: 24px;
+    margin: 2px;
+    padding: 2px 8px;
+    transition-property: background-color, color, min-width, box-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+#workspaces button:hover {
+    background-color: @surface_container_highest;
+    color: @on_surface;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+    min-width: 36px;
+    animation-name: pulseActiveMD3;
+    animation-duration: 2.5s;
+}
+
+#workspaces button.urgent {
+    background-color: @error;
+    color: @on_error;
+    min-width: 36px;
+    animation-name: blinkUrgentMD3;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#workspaces button.empty {
+    color: @surface_variant;
+}
+
+/* Launcher */
+#custom-launcher {
+    background-color: @primary;
+    color: @on_primary;
+    padding-left: 14px;
+    padding-right: 18px;
+    font-size: 20px;
+}
+
+#custom-launcher:hover {
+    background-color: @primary_container;
+    color: @on_primary_container;
+}
+
+/* Power Button */
+#custom-power {
+    background-color: @error;
+    color: @on_error;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 16px;
+}
+
+#custom-power:hover {
+    background-color: @error_container;
+    color: @on_error_container;
+}
+
+#mpris { color: @tertiary; }
+#clock { color: @primary; }
+#custom-notification { color: @secondary; }
+#network { color: @primary; }
+#pulseaudio { color: @secondary; }
+#power-profiles-daemon { color: @tertiary; }
+#network.disconnected {
+    background-color: @error_container;
+    color: @on_error_container;
+}
+#pulseaudio.muted {
+    background-color: @surface_container_highest;
+    color: @outline;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @error_container;
+    border-radius: 999px;
+    padding: 0 4px;
+}
+@keyframes blinkUrgentMD3 {
+    0% {
+        background-color: @error;
+        color: @on_error;
+    }
+    100% {
+        background-color: @surface;
+        color: @error;
+    }
+}
+@keyframes pulseActiveMD3 {
+    0% {
+        background-color: @primary;
+        color: @on_primary;
+        box-shadow: 0 0 0 0 rgba(156, 203, 251, 0.5);
+    }
+    50% {
+        background-color: @primary_fixed;
+        color: @on_primary_fixed;
+        box-shadow: 0 0 0 5px rgba(156, 203, 251, 0);
+    }
+    100% {
+        background-color: @primary;
+        color: @on_primary;
+        box-shadow: 0 0 0 0 rgba(156, 203, 251, 0);
+    }
+}
+@keyframes slideInBar {
+    0% {
+        margin-top: -50px;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 8px;
+        opacity: 1;
+    }
+}
+@keyframes fadeInTooltip {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
