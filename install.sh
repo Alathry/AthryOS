@@ -13,7 +13,7 @@ NET_CHOICE=$(dialog --clear --title " Network Configuration " \
     "IWD" "iwd (Wireless Daemon)" \
     2>&1 1>&3)
 
-PACKAGES="bluetuith matugen cava waybar hypridle hyprland xorg-xwayland swaync swayosd nodejs wget pyright gopls curl gnome-polkit rofi wofi cmatrix gtk3 gtk4 starship adw-gtk-theme nano fonts-jetbrains-mono ttf-jetbrains-mono fonts-noto-color-emoji ttf-nerd-fonts-symbols neovim nvim lua go rust git wiremix awww uwsm fish kitty polkit-gnome brightnessctl"
+PACKAGES="bluetuith matugen cava waybar hypridle hyprland xorg-xwayland swaync swayosd nodejs wget  ethtool wireless_tools speedtest-cli lshw  pyright gopls curl gnome-polkit rofi wofi cmatrix gtk3 gtk4 starship adw-gtk-theme nano fonts-jetbrains-mono ttf-jetbrains-mono fonts-noto-color-emoji ttf-nerd-fonts-symbols neovim nvim lua go rust git wiremix awww uwsm fish kitty polkit-gnome brightnessctl"
 
 if [ "$NET_CHOICE" = "IWD" ]; then
     PACKAGES="$PACKAGES impala"
