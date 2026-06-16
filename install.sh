@@ -172,3 +172,4 @@ echo "  X       : https://x.com/Ala7thry"
 echo "  GitHub  : https://github.com/Alathry"
 echo "  Reddit  : https://www.reddit.com/user/Ala7thry/"
 echo "======================================================="
+ln -sf ~/.cache/colors/cava.ini ~/.config/cava/config
