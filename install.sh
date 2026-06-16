@@ -144,13 +144,13 @@ if [ "$IS_ARCH" = true ]; then
                 if [ $NET_OPT -eq 0 ] && [ -f "1.sh" ]; then
                     clear
                     echo "Running Network Optimization..."
-                    bash 1.sh
+                    sudo sh  1.sh
                 fi
                 
                 if [ $SYS_OPT -eq 0 ] && [ -f "2.sh" ]; then
                     clear
                     echo "Running Systemd Optimization..."
-                    bash 2.sh
+                    sudo sh 2.sh
                 fi
                 
                 dialog --title " Optimization Complete " --yesno "Successfully Installed The Optimize!!\n\nWant to Reboot?" 8 45
