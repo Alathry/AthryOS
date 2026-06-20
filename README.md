@@ -119,5 +119,4 @@ This project is licensed under the GPL-3.0 License.
 
 ## ❤️ AthryOS
 
-Built with passion for the Arch Linux and Hyprland community.
 Support Me 💵 : Alathry@proton.me
