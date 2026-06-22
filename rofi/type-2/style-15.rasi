@@ -1,25 +1,11 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * Modified to use dynamic cached colors.
- * Rofi Version: 1.7.3
- **/
-
-/*****----- Configuration -----*****/
 configuration {
     modi:                       "drun";
     show-icons:                 true;
     display-drun:               " Applications";
     drun-display-format:        "{name}";
 }
-
-/*****----- Global Properties -----*****/
-/* Import the dynamically generated colors */
 @import "~/.cache/colors/rofi.rasi"
 @import "shared/fonts.rasi"
-
-/* Map the cached colors to the variables expected by the theme */
 * {
     background:     @surface;
     background-alt: @surface-container-high;
@@ -27,7 +13,6 @@ configuration {
     selected:       @primary;
 }
 
-/*****----- Main Window -----*****/
 window {
     transparency:                "real";
     location:                    south;
@@ -41,13 +26,12 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      2px 2px 0px 2px solid;
-    border-radius:               10px 10px 0px 0px;
+    border-radius:               0px 0px 0px 0px;
     border-color:                @background-alt;
     background-color:            @background;
     cursor:                      "default";
 }
 
-/*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
     spacing:                     0px;
@@ -60,7 +44,6 @@ mainbox {
     children:                    [ "listview", "entry" ];
 }
 
-/*****----- Inputbar -----*****/
 entry {
     enabled:                     true;
     expand:                      false;
@@ -74,7 +57,6 @@ entry {
     horizontal-align:            0.5;
 }
 
-/*****----- Listview -----*****/
 listview {
     enabled:                     true;
     columns:                     3;
@@ -104,7 +86,6 @@ scrollbar {
     background-color:            @background-alt;
 }
 
-/*****----- Elements -----*****/
 element {
     enabled:                     true;
     spacing:                     15px;
@@ -141,7 +122,6 @@ element-text {
     horizontal-align:            0.5;
 }
 
-/*****----- Message -----*****/
 error-message {
     padding:                     15px;
     border:                      0px solid;
