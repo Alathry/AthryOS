@@ -1,0 +1,5 @@
+@import url('gtk4.css');
+* {
+    border-radius: 10;
+    box-shadow: none;
+}
