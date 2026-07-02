@@ -170,7 +170,7 @@ echo "======================================================="
 echo "  YouTube : https://youtube.com/@Ala7thr"
 echo "  X       : https://x.com/Ala7thry"
 echo "  GitHub  : https://github.com/Alathry"
-echo "  Reddit  : https://www.reddit.com/user/Ala7thry/"
+echo "  Reddit  : https://www.reddit.com/xxxxx Was Delete ):"
 echo "======================================================="
 ln -sf ~/.cache/colors/cava.ini ~/.config/cava/config
 chmod +x ~/.config/waybar/scripts/*.sh
@@ -184,5 +184,7 @@ sudo rm -rf rofi.desktop xgps.desktop xgpsspeed.desktop lstopo.desktop
 sudo mkdir -p ~/Pictures/Wallpapers/
 sudo mkdir -p ~/Pictures/Screenshots/
 sudo cp -r pixel-prairie.png ~/Pictures/Wallpapers/
+sudo mkdir -p ~/.local/share/fonts/
+sudo cp -r FSEX302.ttf  ~/.local/share/fonts/
 awww-daemon
 matugen image ~/Pictures/Wallpapers/pixel-prairie.png
