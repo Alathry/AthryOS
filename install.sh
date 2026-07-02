@@ -186,5 +186,7 @@ sudo mkdir -p ~/Pictures/Screenshots/
 sudo cp -r pixel-prairie.png ~/Pictures/Wallpapers/
 sudo mkdir -p ~/.local/share/fonts/
 sudo cp -r FSEX302.ttf  ~/.local/share/fonts/
+sudo cp -r Perfect DOS VGA 437.ttf ~/.local/share/fonts
+sudo cp -r Perfect_DOS_VGA_437.ttf ~/.local/share/fonts
 awww-daemon
 matugen image ~/Pictures/Wallpapers/pixel-prairie.png
