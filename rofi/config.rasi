@@ -1,0 +1,129 @@
+configuration {
+    modi:                       "drun";
+    show-icons:                 true;
+    display-drun:               " Applications";
+    drun-display-format:        "{name}";
+}
+@import "~/.cache/colors/rofi.rasi"
+* {
+    font:                       "Perfect DOS VGA 437, Pixelon, Fixedsys Excelsior, JetBrains Mono Nerd Font 11";
+    background:                 @surface;
+    background-alt:             @surface-container-high;
+    foreground:                 @on-surface;
+    selected:                   @primary;
+    background-color:           transparent;
+    text-color:                 @foreground;
+}
+window {
+    transparency:               "real";
+    location:                   south;
+    anchor:                     south;
+    fullscreen:                 false;
+    width:                      450px;
+    x-offset:                   0px;
+    y-offset:                   0px;
+    enabled:                    true;
+    margin:                     0px;
+    padding:                    4px;
+    border-radius:              10px 10px 0px 0px; 
+    background-color:           @background;
+    border:                     2px;
+    border-color:               @background-alt;
+    cursor:                     "default";
+}
+mainbox {
+    enabled:                    true;
+    spacing:                    6px;
+    margin:                     0px;
+    padding:                    4px;
+    border:                     0px;
+    border-radius:              0px;
+    background-color:           transparent;
+    children:                   [ "listview", "entry" ];
+}
+entry {
+    enabled:                    true;
+    expand:                     false;
+    padding:                    10px 14px;
+    background-color:           @selected;
+    text-color:                 @background;
+    cursor:                     text;
+    placeholder:                "Type to search...";
+    placeholder-color:          inherit;
+    vertical-align:             0.5;
+    horizontal-align:           0.5;
+    border-radius:              0px;
+    border:                     2px;
+    border-color:               @background-alt;
+}
+listview {
+    enabled:                    true;
+    columns:                    3;
+    lines:                      3;
+    cycle:                      true;
+    dynamic:                    true;
+    scrollbar:                  false;
+    layout:                     vertical;
+    reverse:                    false;
+    fixed-height:               true;
+    fixed-columns:              true;
+    spacing:                    6px;
+    margin:                     0px;
+    padding:                    10px;
+    border:                     0px;
+    border-radius:              0px;
+    background-color:           transparent;
+    text-color:                 @foreground;
+    cursor:                     "default";
+}
+element {
+    enabled:                    true;
+    spacing:                    8px;
+    margin:                     0px;
+    padding:                    12px 6px;
+    border-radius:              0px;
+    orientation:                vertical;
+    cursor:                     pointer;
+    background-color:           @background;
+    text-color:                 @foreground;
+    border:                     2px;
+    border-color:               @background-alt;
+}
+element normal.normal {
+    background-color:           @background;
+    text-color:                 @foreground;
+}
+element selected.normal {
+    background-color:           @selected;
+    text-color:                 @background;
+    border-color:               @selected;
+}
+element-icon {
+    background-color:           transparent;
+    text-color:                 inherit;
+    size:                       48px;
+    cursor:                     inherit;
+    horizontal-align:           0.5;
+}
+element-text {
+    background-color:           transparent;
+    text-color:                 inherit;
+    highlight:                  inherit;
+    cursor:                     inherit;
+    vertical-align:             0.5;
+    horizontal-align:           0.5;
+}
+error-message {
+    padding:                    12px;
+    border:                     2px;
+    border-radius:              0px;
+    background-color:           @background;
+    text-color:                 @foreground;
+}
+textbox {
+    background-color:           @background;
+    text-color:                 @foreground;
+    vertical-align:             0.5;
+    horizontal-align:           0.0;
+    highlight:                  none;
+}
