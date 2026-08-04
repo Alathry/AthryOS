@@ -1,0 +1,150 @@
+@import "/home/alathry/.cache/colors/colors.css";
+* {
+    font-family: "Fixedsys Excelsior", "JetBrainsMono Nerd Font", "Roboto";
+    font-size: 12.5px;
+    font-weight: bold;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    transition: none; 
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+window#waybar > box {
+    background-color: @surface;
+    border-top: 2px solid shade(@surface, 1.7);
+    border-left: 2px solid shade(@surface, 1.7);
+    border-bottom: 2px solid shade(@surface, 0.35);
+    border-right: 2px solid shade(@surface, 0.35);
+    border-radius: 4px;
+    margin-top: 6px;
+    padding: 3px 5px;
+}
+
+.modules-left { padding-left: 4px; }
+.modules-right { padding-right: 4px; }
+.modules-center { padding: 0 4px; }
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    color: @on_surface;
+    background-color: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    border-radius: 4px;
+    min-width: 20px;
+    min-height: 18px;
+    margin: 2px 3px;
+    padding: 0 5px;
+}
+
+#workspaces button.active {
+    background-color: @primary_container;
+    color: @on_primary_container;
+    font-weight: 800;
+    border-top: 2px solid shade(@primary_container, 0.35);
+    border-left: 2px solid shade(@primary_container, 0.35);
+    border-bottom: 2px solid shade(@primary_container, 1.7);
+    border-right: 2px solid shade(@primary_container, 1.7);
+}
+
+#workspaces button:hover {
+    background-color: shade(@surface_variant, 1.15);
+    color: @primary;
+}
+
+#workspaces button.empty {
+    color: alpha(@on_surface_variant, 0.4);
+}
+
+#clock,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-power,
+#custom-noti,
+#custom-playerctl {
+    color: @on_surface;
+    background-color: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    border-radius: 4px;
+    padding: 1px 10px;
+    margin: 2px 3px;
+}
+
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-power:hover,
+#custom-noti:hover,
+#custom-playerctl:hover {
+    background-color: shade(@surface_variant, 0.92);
+    color: @primary;
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+}
+
+#custom-Apps {
+    background-color: @primary_container;
+    color: @on_primary_container;
+    font-weight: 800;
+    border-top: 2px solid shade(@primary_container, 1.7);
+    border-left: 2px solid shade(@primary_container, 1.7);
+    border-bottom: 2px solid shade(@primary_container, 0.35);
+    border-right: 2px solid shade(@primary_container, 0.35);
+    border-radius: 3px;
+    padding: 1px 14px;
+    margin: 2px 4px 2px 2px;
+}
+
+#custom-Apps:hover {
+    background-color: shade(@primary_container, 0.92);
+    border-top: 2px solid shade(@primary_container, 0.35);
+    border-left: 2px solid shade(@primary_container, 0.35);
+    border-bottom: 2px solid shade(@primary_container, 1.7);
+    border-right: 2px solid shade(@primary_container, 1.7);
+}
+
+#tray {
+    background-color: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+    border-radius: 3px;
+    padding: 1px 10px;
+    margin: 2px 3px;
+}
+
+#tray menu {
+    background-color: @surface_container;
+    border: 2px outset shade(@surface_container, 1.4);
+    border-radius: 3px;
+}
+
+@keyframes blink {
+    to { color: @secondary_container; }
+}
+
+@keyframes blink2 {
+    to {
+        background-color: transparent;
+        color: @error;
+    }
+}

@@ -1,0 +1,286 @@
+@import "../../.cache/colors/colors.css";
+@define-color notification-bg @surface;
+@define-color text @on_surface;
+@define-color text-alt @on_surface_variant;
+@define-color background @background;
+@define-color background-alt @surface_container;
+@define-color hover @surface_container_highest;
+@define-color selected @primary;
+@define-color urgent @error;
+@define-color center-bg @surface;
+@define-color center-notification-bg @surface_container_low;
+* {
+    all: unset;
+    font-family: "Perfect DOS VGA 437", "Pixelon", "Fixedsys Excelsior", "JetBrains Mono Nerd Font", monospace;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 0px !important; 
+    transition: none !important;    
+}
+.control-center {
+    background: @surface;
+    border-top: 2px solid shade(@surface, 1.8);
+    border-left: 2px solid shade(@surface, 1.8);
+    border-bottom: 2px solid shade(@surface, 0.3);
+    border-right: 2px solid shade(@surface, 0.3);
+    padding: 6px;
+    margin: 4px;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.45);
+}
+.widget-title {
+    background: @primary;
+    color: @on_primary;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    border-top: 1px solid shade(@primary, 1.5);
+    border-left: 1px solid shade(@primary, 1.5);
+}
+.widget-title label {
+    font-size: 13px;
+    font-weight: 900;
+}
+.widget-title button {
+    background: @surface_variant;
+    color: @text;
+    border-top: 1px solid shade(@surface_variant, 1.7);
+    border-left: 1px solid shade(@surface_variant, 1.7);
+    border-bottom: 1px solid shade(@surface_variant, 0.35);
+    border-right: 1px solid shade(@surface_variant, 0.35);
+    padding: 1px 6px;
+}
+.widget-title button:active {
+    border-top: 1px solid shade(@surface_variant, 0.35);
+    border-left: 1px solid shade(@surface_variant, 0.35);
+    border-bottom: 1px solid shade(@surface_variant, 1.7);
+    border-right: 1px solid shade(@surface_variant, 1.7);
+}
+.notification {
+    padding: 2px;
+}
+image.image,
+image.app-icon,
+.notification-default-image,
+image {
+    margin-right: 12px;
+}
+.notification-content {
+    color: @text;
+    padding-left: 4px;
+}
+.notification-background {
+    background: @surface_container;
+    border-top: 2px solid shade(@surface_container, 0.35);
+    border-left: 2px solid shade(@surface_container, 0.35);
+    border-bottom: 2px solid shade(@surface_container, 1.7);
+    border-right: 2px solid shade(@surface_container, 1.7);
+    margin: 4px 0px;
+    padding: 8px;
+}
+.notification.critical .notification-background {
+    border: 2px solid @urgent;
+    background: alpha(@urgent, 0.12);
+}
+.notification-content {
+    color: @text;
+}
+.notification-content .summary {
+    font-size: 13px;
+    font-weight: 900;
+    color: @primary;
+    margin-bottom: 4px;
+}
+.notification-content .body {
+    color: @text;
+    font-size: 11px;
+}
+.notification-content .time {
+    font-size: 10px;
+    color: @text-alt;
+}
+.notification-background .close-button {
+    background: @surface_variant;
+    color: @text;
+    border-top: 1px solid shade(@surface_variant, 1.7);
+    border-left: 1px solid shade(@surface_variant, 1.7);
+    border-bottom: 1px solid shade(@surface_variant, 0.35);
+    border-right: 1px solid shade(@surface_variant, 0.35);
+    padding: 1px 5px;
+    margin: 2px;
+}
+.notification-background .close-button:hover {
+    background: shade(@surface_variant, 1.1);
+    color: @selected;
+}
+.notification-background .close-button:active {
+    border-top: 1px solid shade(@surface_variant, 0.35);
+    border-left: 1px solid shade(@surface_variant, 0.35);
+    border-bottom: 1px solid shade(@surface_variant, 1.7);
+    border-right: 1px solid shade(@surface_variant, 1.7);
+}
+.notification-action {
+    background: @surface_variant;
+    color: @text;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    padding: 4px 8px;
+    margin: 4px 2px;
+}
+.notification-action:hover {
+    background: shade(@surface_variant, 1.1);
+    color: @primary;
+}
+.notification-action:active {
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+    padding: 5px 7px 3px 9px;
+}
+.notification-row .inline-reply-entry {
+    background: @surface_container_lowest;
+    color: @text;
+    border-top: 2px solid shade(@surface_container_lowest, 0.35);
+    border-left: 2px solid shade(@surface_container_lowest, 0.35);
+    border-bottom: 2px solid shade(@surface_container_lowest, 1.7);
+    border-right: 2px solid shade(@surface_container_lowest, 1.7);
+    padding: 4px 6px;
+}
+.notification-row .inline-reply-button {
+    background: @surface_variant;
+    color: @text;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    padding: 4px 8px;
+}
+.notification-row .inline-reply-button:active {
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+}
+.widget-mpris {
+    background: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    padding: 8px;
+    margin: 6px 0px;
+}
+.widget-mpris-album-art {
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+    margin-right: 8px;
+}
+.widget-mpris-title {
+    font-size: 12px;
+    font-weight: 900;
+    color: @primary;
+}
+.widget-mpris-subtitle {
+    font-size: 11px;
+    color: @text-alt;
+}
+.widget-mpris-player button {
+    background: @surface_container;
+    border-top: 2px solid shade(@surface_container, 1.7);
+    border-left: 2px solid shade(@surface_container, 1.7);
+    border-bottom: 2px solid shade(@surface_container, 0.35);
+    border-right: 2px solid shade(@surface_container, 0.35);
+    padding: 4px 8px;
+    margin: 2px;
+}
+.widget-mpris-player button:active {
+    border-top: 2px solid shade(@surface_container, 0.35);
+    border-left: 2px solid shade(@surface_container, 0.35);
+    border-bottom: 2px solid shade(@surface_container, 1.7);
+    border-right: 2px solid shade(@surface_container, 1.7);
+}
+.widget-volume,
+.widget-backlight {
+    background: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    padding: 6px 10px;
+    margin: 6px 0px;
+}
+.widget-volume trough,
+.widget-backlight trough {
+    background: @surface_container_lowest;
+    border-top: 2px solid shade(@surface_container_lowest, 0.35);
+    border-left: 2px solid shade(@surface_container_lowest, 0.35);
+    border-bottom: 2px solid shade(@surface_container_lowest, 1.7);
+    border-right: 2px solid shade(@surface_container_lowest, 1.7);
+    min-height: 10px;
+}
+.widget-volume highlight,
+.widget-backlight highlight {
+    background: @primary;
+}
+.widget-volume slider,
+.widget-backlight slider {
+    background: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    min-width: 12px;
+    min-height: 18px;
+}
+.widget-buttons-grid,
+.widget-dnd {
+    background: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    padding: 6px;
+    margin: 6px 0px;
+}
+.widget-buttons-grid button {
+    background: @surface_container;
+    border-top: 2px solid shade(@surface_container, 1.7);
+    border-left: 2px solid shade(@surface_container, 1.7);
+    border-bottom: 2px solid shade(@surface_container, 0.35);
+    border-right: 2px solid shade(@surface_container, 0.35);
+    padding: 6px;
+    margin: 3px;
+}
+.widget-buttons-grid button:active,
+.widget-buttons-grid button:checked {
+    border-top: 2px solid shade(@surface_container, 0.35);
+    border-left: 2px solid shade(@surface_container, 0.35);
+    border-bottom: 2px solid shade(@surface_container, 1.7);
+    border-right: 2px solid shade(@surface_container, 1.7);
+    background: @primary;
+    color: @on_primary;
+}
+.widget-dnd switch {
+    background: @surface_container_lowest;
+    border-top: 1px solid shade(@surface_container_lowest, 0.35);
+    border-left: 1px solid shade(@surface_container_lowest, 0.35);
+    border-bottom: 1px solid shade(@surface_container_lowest, 1.7);
+    border-right: 1px solid shade(@surface_container_lowest, 1.7);
+    padding: 2px;
+    min-width: 32px;
+}
+.widget-dnd switch slider {
+    background: @surface_variant;
+    border-top: 1px solid shade(@surface_variant, 1.7);
+    border-left: 1px solid shade(@surface_variant, 1.7);
+    border-bottom: 1px solid shade(@surface_variant, 0.35);
+    border-right: 1px solid shade(@surface_variant, 0.35);
+    min-width: 14px;
+    min-height: 14px;
+}
+.blank-window {
+    background: transparent;
+}

@@ -1,0 +1,108 @@
+@import "/home/alathry/.cache/colors/colors.css";
+
+* {
+    font-family: "Pixelon","JetBrainsMono Nerd Font";
+    font-size: 12.5px;
+    border-radius: 0; 
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    background-color : transparent;
+}
+
+window#waybar > box {
+    background-color: alpha(@surface, 1.0); 
+    border-radius: 10px;                     
+    margin-top: 6px;                          
+    padding: 6px 6px;
+    transition: all 0.3s ease;
+}
+
+.modules-left { padding-left: 8px; }
+.modules-right { padding-right: 8px; }
+.modules-center { padding: 0 4px; }
+
+#workspaces {
+    margin: 0;
+    padding: 2px 0;
+}
+
+#workspaces button {
+    color: alpha(@on_surface_variant, 0.5); 
+    background: transparent;
+    min-width: 22px;
+    min-height: 22px;
+    border-radius: 50%; 
+    margin: 0 4px;
+    padding: 0;
+    transition: all 0.25s cubic-bezier(0.05, 0.7, 0.1, 1);
+}
+
+#workspaces button.active {
+    background-color: @primary_container;  
+    color: @on_primary_container; 
+    font-weight: 800;
+    min-width: 28px;                       
+    border-radius: 12px;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@primary, 0.15);
+    color: @primary;
+}
+
+#workspaces button.empty {
+    color: alpha(@on_surface_variant, 0.25);
+}
+
+#clock,
+#pulseaudio,
+#network,
+#bluetooth,
+#tray,
+#custom-Apps,
+#custom-power,
+#custom-noti,
+#custom-playerctl {
+    color: @on_surface;
+    font-weight: bold;
+    padding: 0 10px; 
+    margin: 3px 2px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-Apps:hover,
+#custom-power:hover,
+#custom-noti:hover,
+#custom-playerctl:hover {
+    background-color: alpha(@surface_variant, 0.4);
+    color: @primary;
+}
+
+#tray {
+    padding: 0 8px;
+}
+
+#tray menu {
+    background-color: @surface_container;
+    border-radius: 10px;
+}
+
+@keyframes blink {
+    to { color: @secondary_container; } 
+}
+
+@keyframes blink2 {
+    to {
+        background-color: transparent;
+        color: @error; 
+    }
+}

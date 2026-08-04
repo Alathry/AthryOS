@@ -1,0 +1,140 @@
+@import "/home/alathry/.cache/colors/colors.css";
+* {
+    font-family: "Perfect DOS VGA 437", "Pixelon", "Fixedsys Excelsior", "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 0px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.18s cubic-bezier(0.16, 1, 0.3, 1), 
+                color 0.18s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+window#waybar {
+    background-color: transparent;
+}
+window#waybar > box {
+    background-color: @surface;
+    border-top: none;
+    border-left: 2px solid shade(@surface, 1.8);
+    border-right: 2px solid shade(@surface, 0.3);
+    border-bottom: 3px solid shade(@surface, 0.3);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 2px 10px 4px 10px;
+}
+#clock,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-power,
+#custom-noti,
+#custom-playerctl {
+    color: @on_surface;
+    background-color: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin: 2px 2px;
+}
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-noti:hover,
+#custom-playerctl:hover,
+#custom-power:hover {
+    background-color: shade(@surface_variant, 1.15);
+    color: @primary;
+    border-top-color: shade(@surface_variant, 1.9);
+    border-left-color: shade(@surface_variant, 1.9);
+}
+#clock:active,
+#pulseaudio:active,
+#network:active,
+#bluetooth:active,
+#custom-noti:active,
+#custom-playerctl:active,
+#custom-power:active {
+    background-color: shade(@surface_variant, 0.85);
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+    padding: 2px 7px 0px 9px;
+}
+#custom-Apps {
+    background-color: @primary_container;
+    color: @on_primary_container;
+    font-weight: 900;
+    border-top: 2px solid shade(@primary_container, 1.8);
+    border-left: 2px solid shade(@primary_container, 1.8);
+    border-bottom: 2px solid shade(@primary_container, 0.3);
+    border-right: 2px solid shade(@primary_container, 0.3);
+    border-radius: 4px;
+    padding: 1px 10px;
+    margin: 2px 4px 2px 2px;
+}
+#custom-Apps:hover {
+    background-color: shade(@primary_container, 1.12);
+}
+#custom-Apps:active {
+    border-top: 2px solid shade(@primary_container, 0.3);
+    border-left: 2px solid shade(@primary_container, 0.3);
+    border-bottom: 2px solid shade(@primary_container, 1.8);
+    border-right: 2px solid shade(@primary_container, 1.8);
+    padding: 2px 9px 0px 11px;
+}
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+#workspaces button {
+    color: @on_surface;
+    background-color: @surface_variant;
+    border-top: 2px solid shade(@surface_variant, 1.7);
+    border-left: 2px solid shade(@surface_variant, 1.7);
+    border-bottom: 2px solid shade(@surface_variant, 0.35);
+    border-right: 2px solid shade(@surface_variant, 0.35);
+    border-radius: 4px;
+    min-width: 22px;
+    padding: 1px 6px;
+    margin: 2px 2px;
+}
+#workspaces button:hover {
+    background-color: shade(@surface_variant, 1.15);
+    color: @primary;
+}
+#workspaces button.active {
+    background-color: shade(@surface_variant, 0.85);
+    color: @primary;
+    font-weight: 900;
+    border-top: 2px solid shade(@surface_variant, 0.35);
+    border-left: 2px solid shade(@surface_variant, 0.35);
+    border-bottom: 2px solid shade(@surface_variant, 1.7);
+    border-right: 2px solid shade(@surface_variant, 1.7);
+    padding: 2px 5px 0px 7px;
+}
+#tray {
+    background-color: shade(@surface, 0.9);
+    border-top: 2px solid shade(@surface, 0.35);
+    border-left: 2px solid shade(@surface, 0.35);
+    border-bottom: 2px solid shade(@surface, 1.7);
+    border-right: 2px solid shade(@surface, 1.7);
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin: 2px 3px;
+}
+#tray menu {
+    background-color: @surface;
+    border-top: 2px solid shade(@surface, 1.7);
+    border-left: 2px solid shade(@surface, 1.7);
+    border-bottom: 2px solid shade(@surface, 0.35);
+    border-right: 2px solid shade(@surface, 0.35);
+    border-radius: 4px;
+    padding: 4px;
+}

@@ -1,0 +1,129 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 0, 
+    "spacing": 5,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-bottom": 0,
+    "margin-right": 0,
+    "modules-left": [
+        "custom/Apps",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/playerctl",
+        "clock"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "bluetooth",
+        "custom/noti",
+        "tray",
+        "custom/power"
+    ],
+    "custom/Apps": {
+        "format": "Apps",
+        "on-click": "~/.config/rofi/launcher.sh",
+        "tooltip": true,
+        "tooltip-format": "Start Menu"
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "cursor": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5"
+        },
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        }
+    },
+    "custom/cava": {
+        "exec": "~/.config/waybar/themes/Alathry/cava.sh"
+    },
+    "custom/playerctl": {
+        "format": "󰝚  {}",
+        "exec": "zscroll --delay 0.3 --length 20 --match-command 'playerctl status' --match-text 'Playing' '--scroll 1' --match-text 'Paused' '--scroll 0' --update-check true \"playerctl metadata --format '{{ artist }} - {{ title }}'\"",
+        "status-icons": {
+            "paused": "󰏤"
+        },
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "exec-if": "playerctl status"
+    },
+    "clock": {
+        "format": "  {:%a, %d. %b %I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}% ",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", ""]
+        },
+        "tooltip-format": "Playing at {volume}%",
+        "scroll-step": 5,
+        "on-click": "kitty --class wiremix -e wiremix",
+        "on-click-right": "kitty --class wiremix -e wiremix"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": "Devices connected: {num_connections}",
+        "on-click": "kitty --class bluetuith -e bluetuith"
+    },
+    "network": {
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format": "{icon}",
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪 Offline",
+        "format-alt": "󰛳 {bandwidthDownBytes} 󰗧 {bandwidthUpBytes}",
+        "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 10,
+        "on-click-right": "kitty --class impala -e impala"
+    },
+    "custom/noti": {
+        "tooltip": true,
+        "tooltip-format": "Left: Action Center\nRight: DND",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󱅫",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "sh ~/.config/rofi/poweroff.sh",
+        "tooltip": false
+    }
+}
