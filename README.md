@@ -101,13 +101,9 @@ Other GPUs may work fine, but official testing has primarily focused on Intel sy
 
 Screenshots Of The Dotfiles -->
 
-<img width="1366" height="768" alt="satty-20260620-180430" src="https://github.com/user-attachments/assets/5203fab5-b8e5-405a-b5bf-515e46442630" />
+<img width="1366" height="767" alt="satty-20260804-131326" src="https://github.com/user-attachments/assets/83103442-94aa-4797-90d1-74f8aad8dafe" />
 
-<img width="1366" height="768" alt="satty-20260620-180537" src="https://github.com/user-attachments/assets/be2b23dd-9887-4937-bfde-0bd2be40a9d7" />
-
-<img width="1366" height="768" alt="satty-20260618-214925" src="https://github.com/user-attachments/assets/ef541e94-fc99-4005-98cd-9d994944acfb" />
-
-<img width="1366" height="768" alt="satty-20260620-180659" src="https://github.com/user-attachments/assets/b1c05650-c72d-4107-8da3-c5a84d91200c" />
+<img width="1366" height="768" alt="satty-20260804-131529" src="https://github.com/user-attachments/assets/1862ca75-123e-47be-b92b-9e7fe388dd9d" />
 
 ---
 
