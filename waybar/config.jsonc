@@ -119,8 +119,8 @@
 
     "custom/power": {
         "format": "󰐥",
-        "on-click": "sh ~/.config/rofi/type-2/poweroff.sh",
+        "on-click": "sh ~/.config/rofi/poweroff.sh",
         "tooltip": true,
-        "tooltip-format": "Turn Off System"
+        "tooltip-format": "Power Mangement"
     }
 }
